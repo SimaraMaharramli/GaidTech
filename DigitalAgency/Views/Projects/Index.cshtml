@@ -1,0 +1,102 @@
+﻿@model ProjectVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Page Header Start -->
+@foreach (var item in Model.Projects)
+{
+    
+    @if (item.LangCode == "en")
+{
+    <div class=" container-fluid bg-primary d-flex flex-column align-items-center justify-content-center" style="padding-bottom:5px;">
+        <h1 class="display-3 text-uppercase mb-3">Projects</h1>
+        <div class="d-inline-flex text-white">
+            <h6 class="text-uppercase m-0"><a class="text-white" asp-action="Index" asp-controller="Home">Home</a></h6>
+            <h6 class="m-0 px-3">/</h6>
+            <h6 class="text-uppercase m-0">Projects</h6>
+        </div>
+    </div>
+    }
+    else if (item.LangCode == "az")
+    {
+    <div class=" container-fluid bg-primary d-flex flex-column align-items-center justify-content-center" style="padding-bottom:5px;">
+            <h1 class="display-3 text-uppercase mb-3">Layihələrimiz</h1>
+        <div class="d-inline-flex text-white">
+            <h6 class="text-uppercase m-0"><a class="text-white" asp-action="Index" asp-controller="Home">Ana Səhifə</a></h6>
+            <h6 class="m-0 px-3">/</h6>
+            <h6 class="text-uppercase m-0">Layihələrimiz</h6>
+        </div>
+    </div>
+    }
+    else
+    {
+    <div class=" container-fluid bg-primary d-flex flex-column align-items-center justify-content-center" style="padding-bottom:5px;">
+        <h1 class="display-3 text-uppercase mb-3">О нас</h1>
+        <div class="d-inline-flex text-white">
+            <h6 class="text-uppercase m-0"><a asp-action="Index" asp-controller="Home" class="text-white">Главная</a></h6>
+            <h6 class="m-0 px-3">/</h6>
+            <h6 class="text-uppercase m-0">О нас</h6>
+        </div>
+        </div>
+    }
+
+    break;
+}
+
+
+<!-- Page Header Start -->
+<!-- Portfolio Start -->
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <div class="row">
+            <div class="col-12 text-center mb-2">
+                <ul class="list-inline mb-4" id="portfolio-flters">
+                    <li class="btn btn-outline-dark text-uppercase py-2 px-4 active" data-filter="*">
+                        <i class="fa fa-star text-primary mr-2"></i>All
+                    </li>
+                    <li class="btn btn-outline-dark text-uppercase py-2 px-4" data-filter=".first">
+                        <i class="fa fa-laptop-code text-primary mr-2"></i>Design
+                    </li>
+                    <li class="btn btn-outline-dark text-uppercase py-2 px-4" data-filter=".second">
+                        <i class="fa fa-mobile-alt text-primary mr-2"></i>Development
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row portfolio-container">
+            @foreach (var item in Model.Projects)
+            {
+                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+                    <div class="position-relative rounded overflow-hidden mb-2">
+                        <img class="img-fluid w-100" src="img/@item" alt="">
+                        <div class="portfolio-btn d-flex align-items-center justify-content-center">
+                            <a href="img/portfolio-1.jpg" data-lightbox="portfolio">
+                                <i class="fa fa-4x fa-plus text-primary"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+            
+        </div>
+    </div>
+</div>
+<!-- Portfolio End -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="~/lib/easing/easing.min.js"></script>
+<script src="~/lib/waypoints/waypoints.min.js"></script>
+<script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="~/lib/isotope/isotope.pkgd.min.js"></script>
+<script src="~/lib/lightbox/js/lightbox.min.js"></script>
+
+<!-- Contact Javascript File -->
+<script src="~/mail/jqBootstrapValidation.min.js"></script>
+<script src="~/mail/contact.js"></script>
+
+<!-- Template Javascript -->
+<script src="~/js/main.js"></script>

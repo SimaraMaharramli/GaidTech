@@ -1,0 +1,92 @@
+﻿@model DigitalAgency.Models.Categories.Category
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="entert-form" style=" padding-top: 70px ; padding-left: 50px;">
+
+    <h1>Edit Category </h1>
+
+    <form method="post" enctype="multipart/form-data" asp-action="Edit" asp-controller="Category">
+
+        <div class="form-group  mt-2 mb-4 my-5">
+            <div class="image-uploaddd">
+                <label class="labelstyle" for="IconFile">
+                  
+                    <h3 class="mt-1 addlogoclass" style="color: black;">
+                        Add Logo:
+                        <input type="file" id="IconFile" name="IconFile" class="form-control-file addhoverinput" onchange="CreateImgPre(this)" />
+                    </h3>
+                </label>
+                <p>
+                    <img id="ImgPreviewbanner" style="width:50px; height:50px; border-style:none; border-color:white;" src="~/ctgicon/@Model.Icon" />
+                </p>
+                <span style="color:gray;">.svg file, max-300kbt</span>
+            </div>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].LangCode">Language Code</label>
+            <input type="text" id="translates[0].LangCode" name="translates[0].LangCode" class="form-control addhoverinput" value="az" required>
+
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].name">Title-az</label>
+            <textarea id="translates[0].Name" name="translates[0].Name" asp-for="Translates.Where(x=>x.LangCode.Contains('a')).FirstOrDefault().Name" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].Desc">Description-az</label>
+            <textarea id="translates[0].Desc" name="translates[0].Desc" asp-for="Translates.Where(x=>x.LangCode.Contains('a')).FirstOrDefault().Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].LangCode">Language Code</label>
+
+            <input type="text" id="translates[1].LangCode" name="translates[1].LangCode" class="form-control addhoverinput" value="en" required>
+
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].Name">Title-en</label>
+            <textarea id="translates[1].Name" name="Translates[1].Name" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Name" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].Desc">Description-en</label>
+            <textarea id="translates[1].Desc" name="Translates[1].Desc" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].LangCode">Language Code</label>
+
+            <input type="text" id="translates[2].LangCode" name="Translates[2].LangCode" class="form-control addhoverinput" value="ru" required>
+
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].Name">Title-ru</label>
+            <textarea id="translates[2].Name" name="translates[2].Name" asp-for="Translates.Where(x=>x.LangCode.Contains('r')).FirstOrDefault().Name" class="form-control addhoverinput" required></textarea>
+        </div>
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].Desc">Description-ru</label>
+            <textarea id="translates[2].Desc" name="translates[2].Desc" asp-for="Translates.Where(x=>x.LangCode.Contains('r')).FirstOrDefault().Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+        <button type="submit" class="btn createbuttonn">Edit</button>
+    </form>
+</div>
+<script>
+
+    function CreateImgPre(input) {
+        if (input.files[0]) {
+            var uploadimg = new FileReader();
+            uploadimg.onload = function (displayimg) {
+                $("#ImgPreviewbanner").attr('src', displayimg.target.result);
+            }
+            uploadimg.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+
+</script>

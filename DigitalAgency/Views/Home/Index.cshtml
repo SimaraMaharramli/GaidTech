@@ -1,0 +1,316 @@
+﻿@model HomeVM    
+<!-- Header Start -->
+    @foreach (var header in @Model.Headers)
+{
+    <div class="container-fluid bg-primary py-5 px-0" style="margin-bottom: 90px;">
+        <div class="row mx-0 align-items-center">
+            <div class="col-lg-6 px-md-5 text-center text-lg-left">
+                <h1 class="display-2 text-uppercase mb-3">@header.Head</h1>
+                <p class="text-dark mb-4">
+                    @header.Desc
+                </p>
+               @if (Model.LangCode=="en")
+                {
+                    <a asp-action="Index" asp-controller="About" class="btn btn-dark text-uppercase mt-1 py-3 px-5">Learn More</a>
+                }
+                else if (Model.LangCode == "az")
+                {
+                    <a asp-action="Index" asp-controller="About" class="btn btn-dark text-uppercase mt-1 py-3 px-5">Daha Ətraflı </a>
+                }
+                else
+                {
+                    <a asp-action="Index" asp-controller="About" class="btn btn-dark text-uppercase mt-1 py-3 px-5">Узнать больше</a>
+                }
+            </div>
+            <div class="col-lg-6 px-0 text-right">
+                <img class="img-fluid mt-5 mt-lg-0"  src="img/@header.Image" alt="">
+            </div>
+        </div>
+    </div>
+}
+    
+    <!-- Header End -->
+
+
+    <!-- About Start -->
+    @*@foreach (var about in @Model.Abouts)
+{
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img class="img-fluid mb-4 mb-lg-0" src="img/@about.Image" alt="">
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="display-4 text-uppercase mb-4">@about.Head</h1>
+                    <h5 class="text-uppercase text-primary mb-3">@about.SecondHead</h5>
+                    <p class="mb-4">@about.Desc</p>
+                    <a href="" class="btn btn-primary text-uppercase py-3 px-5">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}*@
+    
+    <!-- About End -->
+
+
+    <!-- Services Start -->
+   
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+        @if (Model.LangCode == "en")
+        {
+            <h1 class="display-4 text-uppercase text-center mb-5">Our Services</h1>
+        }
+        else if (Model.LangCode == "az")
+        {
+            <h1 class="display-4 text-uppercase text-center mb-5">Xidmətlərimiz</h1>
+        }
+        else
+        {
+            <h1 class="display-4 text-uppercase text-center mb-5">Наши Cервисы</h1>
+        }
+           
+            <div class="row">
+                @foreach (var service in Model.Services)
+                {
+                    <div class="col-lg-3 mb-2">
+                    <div class="service-item rounded p-5 mb-4">
+                        <i class="@service.Icon text-primary mb-4"></i>
+                        <h4 class="text-uppercase mb-4">@service.Name <span class="d-block text-body"></span></h4>
+                        <p class="m-0">@service.Desc</p>
+                    </div>
+                </div>
+                }
+                
+                
+            </div>
+        </div>
+    </div>
+
+     
+    <!-- Services End -->
+
+
+    <!-- Portfolio Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+        @if (Model.LangCode == "en")
+        {
+            <h1 class="display-4 text-uppercase text-center mb-5">Our Projects</h1>
+        }
+        else if (Model.LangCode == "az")
+        {
+            <h1 class="display-4 text-uppercase text-center mb-5">Layihələrimiz</h1>
+        }
+        else
+        {
+            <h1 class="display-4 text-uppercase text-center mb-5">Наши проекты</h1>
+        }
+           
+            <div class="row">
+                <div class="col-12 text-center mb-2">
+                    <ul class="list-inline mb-4" id="portfolio-flters">
+                        <li class="btn btn-outline-dark text-uppercase py-2 px-4 active" data-filter="*">
+                            <i class="fa fa-star text-primary mr-2"></i>All
+                        </li>
+                        @foreach (var item in Model.Categories)
+                    {
+                        <li  class="btn btn-outline-dark text-uppercase py-2 px-4 categoryfilter" data-id="@item.Id" data-filter=".first">
+                            <i class="@item.Icon" style="color:orange; padding-right:15px;"></i>@item.Name
+                        </li>
+                    }
+                        
+                      @*  <li class="btn btn-outline-dark text-uppercase py-2 px-4" data-filter=".second">
+                            <i class="fa fa-mobile-alt text-primary mr-2"></i>Development
+                        </li>*@
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row portfolio-container">
+                @foreach (var project in @Model.Categories)
+            {
+                @foreach (var item in project.Projects)
+                {
+                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+                        <div class="position-relative rounded overflow-hidden mb-2">
+
+                            <img class="img-fluid w-100" src="img/@item.Image" alt="">
+
+
+                            <div class="portfolio-btn d-flex align-items-center justify-content-center">
+                                <a href="img/portfolio-1.jpg" data-lightbox="portfolio">
+                                    <i class="fa fa-4x fa-plus text-primary"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+               
+            }
+                
+
+            </div>
+        
+            
+        </div>
+    </div>
+    <!-- Portfolio End -->
+
+
+    <!-- Pricing Plan Start -->
+    
+  @*  <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <h1 class="display-4 text-uppercase text-center mb-5">Competitive Pricing</h1>
+            <div class="row">
+                @foreach (var pricing in Model.Pricings)
+            {
+                <div class="col-lg-4 mb-2">
+                    <div class="bg-light rounded text-center pt-5 mt-lg-5 mb-4">
+                        <h2 class="text-uppercase">@pricing.Header</h2>
+                        <h6 class="text-uppercase text-body mb-5">The Best Choice</h6>
+                        <div class="text-center bg-dark rounded-circle p-4 mb-2">
+                            <h1 class="display-4 text-white mb-0">
+                                <small class="align-top"
+                                   style="font-size: 22px; line-height: 45px;">$</small>@pricing.Price<small class="align-bottom" style="font-size: 16px; line-height: 40px;">
+                                    /
+                                    Mo
+                                </small>
+                            </h1>
+                        </div>
+                        <div class="text-center py-4">
+                            <p>@pricing.Property1</p>
+                            <p>@pricing.Property2</p>
+                            <p>@pricing.Property3</p>
+                            <p>@pricing.Property4</p>
+                            <a href="" class="btn btn-dark text-uppercase py-2 px-4 my-3">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+            }
+                
+
+            </div>
+        </div>
+    </div>*@
+
+    
+    <!-- Pricing Plan End -->
+
+
+    <!-- Team Start -->
+    
+
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+        @if (Model.LangCode == "en")
+        {
+            <h1 class="display-4 text-uppercase text-center mb-5">Our Team</h1>
+        }
+        else if (Model.LangCode == "az")
+        {
+            <h1 class="display-4 text-uppercase text-center mb-5">Komandamız</h1>
+        }
+        else
+        {
+            <h1 class="display-4 text-uppercase text-center mb-5">Наша команда</h1>
+        }
+       
+        
+            <div class="owl-carousel team-carousel position-relative" style="padding-left: 30px;">
+                @foreach (var team in Model.Teams)
+        {
+                <div class="team-item rounded overflow-hidden">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/@team.Image" alt="">
+                        <div class="team-overlay">
+                            <div class="d-flex align-items-center justify-content-start">
+                                <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="@team.Social1"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="@team.Social2"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square mx-1" href="@team.Social3"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-light text-center p-4">
+                        <h4 class="text-uppercase">@team.Name</h4>
+                        <p class="m-0">@team.Position</p>
+                    </div>
+                </div>
+                
+            
+            }
+        </div>
+        </div>
+    </div>
+
+    
+    <!-- Team End -->
+
+
+@*    <!-- Testimonial Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <h1 class="display-4 text-uppercase text-center mb-5">Our Client's Say</h1>
+            <div class="owl-carousel testimonial-carousel">
+                @foreach (var client in Model.Clients)
+            {
+                <div class="testimonial-item position-relative text-center rounded p-4">
+                    <img class="img-fluid rounded mx-auto my-4" src="img/@client.Image" alt="">
+                    <h5 class="text-uppercase">@client.Name</h5>
+                    <p class="text-uppercase">@client.Profession</p>
+                    <p class="text-secondary">@client.Message</p>
+                </div>
+
+            }
+                
+            </div>
+        </div>
+    </div>*@
+    <!-- Testimonial End -->
+
+<script src="<script src=" https: //cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>"></script>
+<script src="<script src=" https: //cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg==" 
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>"></script>
+<script src="~/lib/easing/easing.min.js"></script>
+<script src="~/lib/waypoints/waypoints.min.js"></script>
+<script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="~/lib/isotope/isotope.pkgd.min.js"></script>
+<script src="~/lib/lightbox/js/lightbox.min.js"></script>
+
+<!-- Contact Javascript File -->
+<script src="~/mail/jqBootstrapValidation.min.js"></script>
+<script src="~/mail/contact.js"></script>
+
+<!-- Template Javascript -->
+<script src="~/js/main.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var categoryFilters = document.querySelectorAll('.categoryfilter');
+
+        categoryFilters.forEach(function (filter) {
+            filter.addEventListener('click', function () {
+                var dataId = this.getAttribute('data-id');
+                sendIdToController(dataId);
+            });
+        });
+    });
+
+    function sendIdToController(id) {
+        $.ajax({
+            type: "GET",
+            url: "/Home/Index",
+            data: { id: id },
+            success: function (response) {
+                // Controller'dan dönen yanıtı işleyebilirsiniz
+            },
+            error: function (err) {
+                console.error(err);
+            }
+        });
+    }
+</script>

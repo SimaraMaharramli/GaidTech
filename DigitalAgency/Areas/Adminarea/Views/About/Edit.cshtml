@@ -1,0 +1,125 @@
+﻿@model DigitalAgency.Models.About
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="entert-form" style=" padding-top: 70px ; padding-left: 50px;">
+
+    <h1>Edit About </h1>
+
+    <form method="post" enctype="multipart/form-data" asp-action="Edit" asp-controller="About">
+
+        <div class="form-group  mt-2 mb-4 my-5">
+            <div class="image-uploaddd">
+                <label class="labelstyle" for="Image">
+
+                    <h3 class="mt-1 addlogoclass" style="color: black;">
+                        Add image:
+                        <input type="file" id="ImageFile" name="ImageFile" class="form-control-file addhoverinput" onchange="CreateImgPre(this)" />
+                    </h3>
+                </label>
+                <p>
+                    <img id="ImgPreviewbanner" style="width:50px; height:50px; border-style:none; border-color:white;" src="~/aboutImage/@Model.Image" />
+                </p>
+                <span style="color:gray;">.svg file, max-300kbt</span>
+            </div>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].LangCode">Language Code</label>
+            <input readonly type="text" id="translates[0].LangCode" name="translates[0].LangCode" class="form-control addhoverinput" value="az" required>
+
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].Head">Head-az</label>
+            <textarea id="translates[0].Head" name="translates[0].Head" asp-for="Translates.Where(x=>x.LangCode.Contains('a')).FirstOrDefault().Head" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].SecondHead">SecondHead-az</label>
+            <textarea id="translates[0].SecondHead" name="translates[0].SecondHead" asp-for="Translates.Where(x=>x.LangCode.Contains('a')).FirstOrDefault().SecondHead" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].Desc">Description-az</label>
+            <textarea id="translates[0].Desc" name="translates[0].Desc" asp-for="Translates.Where(x=>x.LangCode.Contains('a')).FirstOrDefault().Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].LangCode">Language Code</label>
+
+            <input readonly type="text" id="translates[1].LangCode" name="translates[1].LangCode" class="form-control addhoverinput" value="en" required>
+
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].Head">Head-en</label>
+            <textarea id="translates[1].Head" name="Translates[1].Head" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Head" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].SecondHead">SecondHead-en</label>
+            <textarea id="translates[1].SecondHead" name="Translates[1].SecondHead" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().SecondHead" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].Desc">Description-en</label>
+            <textarea id="translates[1].Desc" name="Translates[1].Desc" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].LangCode">Language Code</label>
+
+            <input readonly type="text" id="translates[2].LangCode" name="Translates[2].LangCode" class="form-control addhoverinput" value="ru" required>
+
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].Head">Head-ru</label>
+            <textarea id="translates[2].Head" name="translates[2].Head" asp-for="Translates.Where(x=>x.LangCode.Contains('r')).FirstOrDefault().Head" class="form-control addhoverinput" required></textarea>
+        </div>
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].SecondHead">SecondHead-ru</label>
+            <textarea id="translates[2].SecondHead" name="translates[2].SecondHead" asp-for="Translates.Where(x=>x.LangCode.Contains('r')).FirstOrDefault().SecondHead" class="form-control addhoverinput" required></textarea>
+        </div>
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].Desc">Description-ru</label>
+            <textarea id="translates[2].Desc" name="translates[2].Desc" asp-for="Translates.Where(x=>x.LangCode.Contains('r')).FirstOrDefault().Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <label for="Email">Email</label>
+        <input type="text" class="form-control" asp-for="Email">
+
+        <label for="Location">Location</label>
+        <input type="text" class="form-control" asp-for="Location">
+
+        <label for="Phone">Phone</label>
+        <input type="number" class="form-control" asp-for="Phone">
+
+
+
+
+
+
+
+
+        <button type="submit" class="btn createbuttonn">Edit</button>
+    </form>
+</div>
+<script>
+
+    function CreateImgPre(input) {
+        if (input.files[0]) {
+            var uploadimg = new FileReader();
+            uploadimg.onload = function (displayimg) {
+                $("#ImgPreviewbanner").attr('src', displayimg.target.result);
+            }
+            uploadimg.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+
+</script>

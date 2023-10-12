@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Adminarea\Data\**" />
+    <Compile Remove="Areas\Adminarea\Models\**" />
+    <Content Remove="Areas\Adminarea\Data\**" />
+    <Content Remove="Areas\Adminarea\Models\**" />
+    <EmbeddedResource Remove="Areas\Adminarea\Data\**" />
+    <EmbeddedResource Remove="Areas\Adminarea\Models\**" />
+    <None Remove="Areas\Adminarea\Data\**" />
+    <None Remove="Areas\Adminarea\Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.21">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.21">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Header\" />
+    <Folder Include="wwwroot\ctgicon\" />
+    <Folder Include="wwwroot\ctgicon\" />
+    <Folder Include="wwwroot\aboutImage\" />
+    <Folder Include="wwwroot\aboutimage\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Admin\assets\js\js\.DS_Store" />
+    <None Include="wwwroot\Admin\assets\js\js\bootstrap.min.js" />
+    <None Include="wwwroot\Admin\assets\js\js\jquery.min.js" />
+    <None Include="wwwroot\Admin\assets\js\js\main.js" />
+    <None Include="wwwroot\Admin\assets\js\js\popper.js" />
+  </ItemGroup>
+
+</Project>

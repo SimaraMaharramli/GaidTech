@@ -1,0 +1,59 @@
+﻿@using DigitalAgency.Areas.Adminarea.ViewModels.Account;
+@model LoginVM;
+@{
+	Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Sea Breeze Admin</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+
+
+	<link rel="shortcut icon" href="~/admin/assets//images/favicon.png" />
+
+
+</head>
+<body style="background-color:#FAFDFF;">
+	<section class="ftco-section" style="height: 700px;">
+		<div style="display:flex; justify-content:center;margin: 229px 100px 100px 100px;  ">
+
+			<div class="row justify-content-center" style="display:flex; justify-content:center;">
+				<div style=" width: 447px;height: 423px;border-radius: 12px;background-color:white; ">
+					<div class=" d-flex align-items-center justify-content-center" style="display:flex; justify-content:center;align-items:center;margin-top:60px">
+					<h1>LOGO</h1>
+					</div>
+					<div style="border-radius: 12px;display:flex; justify-content:center; background-color:white;margin-top:60px; display:flex; justify-content:center; align-items:center; ">
+						<form method="post">
+							<div style="background-color:white !important ;margin-top:-10px;border:solid 1px #E8E8E8;border-radius:12px; margin-bottom: 30px; display:flex; justify-content:center;">
+								<input type="text" style=" padding-left:20px;background-color:white !important ; width: 327px;height: 53px;top: 383.01953125px;left: 556px;border-radius: 12px;border: 1px;" class="form-control rounded-left" placeholder="Full Name" asp-for="@Model.Email" required>
+							</div>
+							<div style="background-color:white !important ;border:solid 1px #E8E8E8; display:flex;margin-top:-10px;border-radius:12px; margin-bottom: 30px; justify-content:center;">
+								<input type="password" style="padding-left:20px;background-color:white; width: 327px;height: 53px;top: 383.01953125px;left: 556px;border-radius: 12px;border: 1px;" class="form-control rounded-left" placeholder="Şifrə" asp-for="@Model.Password" required>
+							</div>
+							<div style="display:flex;margin-top:-10px;margin-bottom: 30px; justify-content:center;">
+								<button type="submit" value="Create" class="btn btn-primary rounded submit p-3 px-5" style="width: 347px;height:53px;cursor:pointer;border-radius: 12px;border: 1px; background-color:#234356;color:#E8E8E8;">
+									Daxil ol
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="~/admin/assets/js/js/jquery.min.js"></script>
+	<script src="~/admin/assets/js/js/popper.js"></script>
+	<script src="~/admin/assets/js/js/bootstrap.min.js"></script>
+	<script src="~/admin/assets/js/js/main.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.4/jquery.validate.min.js" integrity="sha512-FOhq9HThdn7ltbK8abmGn60A/EMtEzIzv1rvuh+DqzJtSGq8BRdEN0U+j0iKEIffiw/yEtVuladk6rsG4X6Uqg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
+

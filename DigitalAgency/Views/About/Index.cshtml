@@ -1,0 +1,152 @@
+﻿@model GetAllAbout
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+<!-- Libraries Stylesheet -->
+<link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="~/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="~/css/style.css" rel="stylesheet">
+<!-- Page Header Start -->
+        @if (Model.LangCode=="en")
+{
+    <div class=" container-fluid bg-primary d-flex flex-column align-items-center justify-content-center" style="padding-bottom:5px;">
+        <h1 class="display-3 text-uppercase mb-3">About</h1>
+        <div class="d-inline-flex text-white">
+            <h6 class="text-uppercase m-0"><a asp-action="Index" asp-controller="Home" class="text-white" >Home</a></h6>
+            <h6 class="m-0 px-3">/</h6>
+            <h6 class="text-uppercase m-0">About</h6>
+        </div>
+    </div>
+}
+else if (Model.LangCode=="az")
+{
+    <div class=" container-fluid bg-primary d-flex flex-column align-items-center justify-content-center" style="padding-bottom:5px;">
+        <h1 class="display-3 text-uppercase mb-3">Haqqımızda</h1>
+        <div class="d-inline-flex text-white">
+            <h6 class="text-uppercase m-0"><a asp-action="Index" asp-controller="Home" class="text-white">Ana səhifə</a></h6>
+            <h6 class="m-0 px-3">/</h6>
+            <h6 class="text-uppercase m-0">Haqqımızda</h6>
+        </div>
+    </div>
+}
+else
+{
+    <div class=" container-fluid bg-primary d-flex flex-column align-items-center justify-content-center" style="padding-bottom:5px;">
+        <h1 class="display-3 text-uppercase mb-3">О нас</h1>
+        <div class="d-inline-flex text-white">
+            <h6 class="text-uppercase m-0"><a asp-action="Index" asp-controller="Home" class="text-white">Главная</a></h6>
+            <h6 class="m-0 px-3">/</h6>
+            <h6 class="text-uppercase m-0">О нас</h6>
+        </div>
+    </div>
+}
+
+<!-- Page Header Start -->
+<!-- About Start -->
+<div class="container-fluid pt-5">
+    <div class="container pt-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <img class="img-fluid mb-4 mb-lg-0" src="~/aboutimage/@Model.Image" alt="">
+            </div>
+            <div class="col-lg-6">
+                <h1 class="display-4 text-uppercase mb-4">@Model.Head</h1>
+                <h5 class="text-uppercase text-primary mb-3">@Model.Desc</p>
+                @*<a href="" class="btn btn-primary text-uppercase py-3 px-5">Read More</a>*@
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+<!-- About Info Start -->
+<div class="container-fluid py-5">
+    <div class="container pb-3">
+        <div class="row">
+            <div class="col-lg-4 mb-2">
+                <div class="d-flex align-items-center bg-light rounded mb-4 px-5" style="height: 150px;">
+                    <i class="fa fa-3x fa-map-marker-alt text-primary mr-3"></i>
+                    <div class="d-flex flex-column">
+                        @if (Model.LangCode=="en")
+                        {
+                            <h5 class="text-uppercase">Our Office</h5>
+                        }
+                        else if (Model.LangCode == "ru")
+                        {
+                            <h5 class="text-uppercase">Наш Oфис</h5>
+                        }
+                        else
+                        {
+                            <h5 class="text-uppercase">Bizim Ofis</h5>
+                        }
+
+                        <p class="m-0">@Model.Location</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-2">
+                <div class="d-flex align-items-center bg-light rounded mb-4 px-5" style="height: 150px;">
+                    <i class="fa fa-3x fa-envelope-open text-primary mr-3"></i>
+                    <div class="d-flex flex-column">
+                        @if (Model.LangCode == "en")
+                        {
+                            <h5 class="text-uppercase">Email</h5>
+                        }
+                        else if (Model.LangCode == "ru")
+                        {
+                            <h5 class="text-uppercase">Электронная почта</h5>
+                        }
+                        else
+                        {
+                            <h5 class="text-uppercase">Mail</h5>
+                        }
+                        
+                        <p class="m-0">@Model.Email</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-2">
+                <div class="d-flex align-items-center bg-light rounded mb-4 px-5" style="height: 150px;">
+                    <i class="fas fa-3x fa-phone-alt text-primary mr-3"></i>
+                    <div class="d-flex flex-column">
+                        @if (Model.LangCode == "en")
+                        {
+                            <h5 class="text-uppercase">Call </h5>
+                        }
+                        else if (Model.LangCode == "ru")
+                        {
+                            <h5 class="text-uppercase">Вызов</h5>
+                        }
+                        else
+                        {
+                            <h5 class="text-uppercase">Zəng edin</h5>
+                        }
+                        
+                        <p class="m-0">+@Model.Phone</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About Info End -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="~/lib/easing/easing.min.js"></script>
+<script src="~/lib/waypoints/waypoints.min.js"></script>
+<script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="~/lib/isotope/isotope.pkgd.min.js"></script>
+<script src="~/lib/lightbox/js/lightbox.min.js"></script>
+
+<!-- Contact Javascript File -->
+<script src="~/mail/jqBootstrapValidation.min.js"></script>
+<script src="~/mail/contact.js"></script>
+
+<!-- Template Javascript -->
+<script src="~/js/main.js"></script>

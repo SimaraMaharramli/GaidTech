@@ -1,0 +1,87 @@
+﻿@model List<GetallService>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Page Header Start -->
+@foreach (var item in Model)
+{
+
+    @if (item.LangCode == "en")
+    {
+        <div class="container-fluid bg-primary d-flex flex-column align-items-center justify-content-center" style="padding-bottom:5px;">
+            <h1 class="display-3 text-uppercase mb-3">Services</h1>
+            <div class="d-inline-flex text-white">
+                <h6 class="text-uppercase m-0"><a class="text-white" asp-action="Index" asp-controller="Home">Home</a></h6>
+                <h6 class="m-0 px-3">/</h6>
+                <h6 class="text-uppercase m-0">Services</h6>
+            </div>
+        </div>
+    }
+    else if (item.LangCode == "ru")
+    {
+        <div class="container-fluid bg-primary d-flex flex-column align-items-center justify-content-center" style="padding-bottom:5px;">
+            <h1 class="display-3 text-uppercase mb-3">Cервисы</h1>
+            <div class="d-inline-flex text-white">
+                <h6 class="text-uppercase m-0"><a class="text-white" asp-action="Index" asp-controller="Home">Главная</a></h6>
+                <h6 class="m-0 px-3">/</h6>
+                <h6 class="text-uppercase m-0">Cервисы</h6>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="container-fluid bg-primary d-flex flex-column align-items-center justify-content-center" style="padding-bottom:5px;">
+            <h1 class="display-3 text-uppercase mb-3">Xidmətlərimiz</h1>
+            <div class="d-inline-flex text-white">
+                <h6 class="text-uppercase m-0"><a class="text-white" asp-action="Index" asp-controller="Home">Ana səhifə</a></h6>
+                <h6 class="m-0 px-3">/</h6>
+                <h6 class="text-uppercase m-0">Xidmətlərimiz</h6>
+            </div>
+        </div>
+    }
+    break;
+}
+
+<!-- Page Header Start -->
+<!-- Services Start -->
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+   
+
+        <div class="row">
+          
+            @foreach (var service in Model)
+            {
+                <div class="col-lg-3 mb-2">
+                    <div class="service-item rounded p-5 mb-4">
+                        <i class="@service.Icon text-primary mb-4"></i>
+                        <h4 class="text-uppercase mb-4">@service.Name <span class="d-block text-body"></span></h4>
+                        <p class="m-0">@service.Desc</p>
+                    </div>
+                </div>
+            }
+                
+            
+            
+            
+        </div>
+    </div>
+</div>
+<!-- Services End -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="~/lib/easing/easing.min.js"></script>
+<script src="~/lib/waypoints/waypoints.min.js"></script>
+<script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="~/lib/isotope/isotope.pkgd.min.js"></script>
+<script src="~/lib/lightbox/js/lightbox.min.js"></script>
+
+<!-- Contact Javascript File -->
+<script src="~/mail/jqBootstrapValidation.min.js"></script>
+<script src="~/mail/contact.js"></script>
+
+<!-- Template Javascript -->
+<script src="~/js/main.js"></script>
+
