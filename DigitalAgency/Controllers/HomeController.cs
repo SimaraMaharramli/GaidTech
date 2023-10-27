@@ -3,6 +3,7 @@ using DigitalAgency.Models;
 using DigitalAgency.Models.Project;
 using DigitalAgency.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Reflection.Metadata;
 using System.Security.Cryptography.Pkcs;
@@ -92,6 +93,13 @@ namespace DigitalAgency.Controllers
             }
             return View(home);
         }
-      
+
+        public async Task<IActionResult> ProjectImage(int id)
+        { 
+            if (id == 0) NotFound();
+              var proj=await _context.ProjectImages.Where(x=>x.ProjectId==id).ToListAsync();
+            return View("_ProjectImage" , proj);
+        }
+
     }
 }

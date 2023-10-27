@@ -112,16 +112,38 @@
             <div class="row">
                 <div class="col-12 text-center mb-2">
                     <ul class="list-inline mb-4" id="portfolio-flters">
-                        <li class="btn btn-outline-dark text-uppercase py-2 px-4 active" data-filter="*">
-                            <i class="fa fa-star text-primary mr-2"></i>All
-                        </li>
-                        @foreach (var item in Model.Categories)
+                       
+                           
+                            @if (Model.LangCode=="en")
+                                {
+                            <li class="btn btn-outline-dark text-uppercase py-2 px-4 active" data-filter="*">
+                                <i class="fa fa-star text-primary mr-2"></i>All
+                            </li>
+
+                            }
+                    else if (Model.LangCode == "az")
                     {
-                        <li  class="btn btn-outline-dark text-uppercase py-2 px-4 categoryfilter" data-id="@item.Id" data-filter=".first">
-                            <i class="@item.Icon" style="color:orange; padding-right:15px;"></i>@item.Name
+                        <li class="btn btn-outline-dark text-uppercase py-2 px-4 active" data-filter="*">
+                            <i class="fa fa-star text-primary mr-2"></i>Hamısı
                         </li>
                     }
+                    else
+                    {
+                        <li class="btn btn-outline-dark text-uppercase py-2 px-4 active" data-filter="*">
+                            <i class="fa fa-star text-primary mr-2"></i>Все
+                        </li>
                         
+                            }
+
+                        @foreach (var item in Model.Categories)
+                        {
+                        <li  class="btn btn-outline-dark text-uppercase py-2 px-4 categoryfilter" data-id="@item.Id" data-filter=".first">
+                            <i  class="@item.Icon" style="color:orange; padding-right:15px;"></i>@item.Name
+                        </li>
+                        }
+
+                   
+
                       @*  <li class="btn btn-outline-dark text-uppercase py-2 px-4" data-filter=".second">
                             <i class="fa fa-mobile-alt text-primary mr-2"></i>Development
                         </li>*@
@@ -137,12 +159,12 @@
                     <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
                         <div class="position-relative rounded overflow-hidden mb-2">
 
-                            <img class="img-fluid w-100" src="img/@item.Image" alt="">
+                            <img class="img-fluid w-100 " src="img/@item.Image" alt="" >
 
-
+                                
                             <div class="portfolio-btn d-flex align-items-center justify-content-center">
-                                <a href="img/portfolio-1.jpg" data-lightbox="portfolio">
-                                    <i class="fa fa-4x fa-plus text-primary"></i>
+                                <a data-lightbox="portfolio" class="showpartial">
+                                    <i class="fa fa-4x fa-plus text-primary showpartial" id="@item.ProjectId"></i>
                                 </a>
                             </div>
                         </div>
@@ -157,6 +179,13 @@
             
         </div>
     </div>
+
+
+
+
+
+
+
     <!-- Portfolio End -->
 
 
@@ -272,14 +301,16 @@
     <!-- Testimonial End -->
 
 <script src="<script src=" https: //cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-crossorigin="anonymous" referrerpolicy="no-referrer"></script>"></script>
-<script src="<script src=" https: //cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg==" 
-crossorigin="anonymous" referrerpolicy="no-referrer"></script>"></script>
-<script src="~/lib/easing/easing.min.js"></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>"></script>
+<script src="<script src=" https: //cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>"></script>
+
+
+    <script src="lib/easing/easing.min.js"></script>
 <script src="~/lib/waypoints/waypoints.min.js"></script>
 <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
 <script src="~/lib/isotope/isotope.pkgd.min.js"></script>
-<script src="~/lib/lightbox/js/lightbox.min.js"></script>
+@*<script src="~/lib/lightbox/js/lightbox.min.js"></script>*@
 
 <!-- Contact Javascript File -->
 <script src="~/mail/jqBootstrapValidation.min.js"></script>
@@ -310,6 +341,31 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>"></script>
             },
             error: function (err) {
                 console.error(err);
+            }
+        });
+    }
+
+
+
+    $('.showpartial').on('click', function (event) {
+      
+        event.preventDefault(); // Tıklamayı durdur
+        var clickableElement = $('.showpartial');
+        var elementId = $(this).attr('id'); // Veri özelliği ile proje ID'sini al
+        console.log(elementId);
+        openProjectImages(elementId); // Proje resimlerini açmak için işlevi çağır
+    });
+    function openProjectImages(projectId) {
+        // AJAX isteği ile proje verilerini al
+        $.ajax({
+            type: "GET",
+            url: "/Home/ProjectImage/" + projectId, // Sunucu tarafında bu URL'yi karşılamanız gerekiyor
+            success: function (data) {
+                // AJAX isteği başarılı olduğunda burada verileri işleyin
+                //displayProjectData(data);
+            },
+            error: function () {
+                // Hata işleme kodları
             }
         });
     }

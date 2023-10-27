@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * Lightbox v2.10.0
  * by Lokesh Dhakar
  *
@@ -13,6 +13,7 @@
  */
 
 // Uses Node, AMD or browser globals to create a module.
+
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
@@ -97,9 +98,29 @@
     if ($('#lightbox').length > 0) {
         return;
     }
-
+      $('.project-link').on('click', function (event) {
+          event.preventDefault(); // Tıklamayı durdur
+          var clickableElement = $('.showpartial');
+          var elementId = $(this).attr('id'); // Veri özelliği ile proje ID'sini al  
+          console.log(projectId);
+          openProjectImages(projectId); // Proje resimlerini açmak için işlevi çağır
+      });
+      function openProjectImages(projectId) {
+          // AJAX isteği ile proje verilerini al
+          $.ajax({
+              type: "GET",
+              url: "/Project/GetProjectById/" + projectId, // Sunucu tarafında bu URL'yi karşılamanız gerekiyor
+              success: function (data) {  
+                  // AJAX isteği başarılı olduğunda burada verileri işleyin
+                  displayProjectData(data);
+              },
+              error: function () {
+                  // Hata işleme kodları
+              }
+          });
+      }
     var self = this;
-    $('<div id="lightboxOverlay" class="lightboxOverlay"></div><div id="lightbox" class="lightbox"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" /><div class="lb-nav"><a class="lb-prev" href="" ></a><a class="lb-next" href="" ></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div>').appendTo($('body'));
+    //$('<div id="lightboxOverlay" class="lightboxOverlay"></div><div id="lightbox" class="lightbox"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" /><div class="lb-nav"><a class="lb-prev" href="" ></a><a class="lb-next" href="" ></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div>').appendTo($('body'));
 
     // Cache jQuery objects
     this.$lightbox       = $('#lightbox');

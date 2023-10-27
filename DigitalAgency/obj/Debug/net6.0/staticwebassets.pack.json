@@ -5485,8 +5485,36 @@
       "PackagePath": "staticwebassets\\ctgicon\\fd42744d-6972-4cd4-b145-04b4296f9e38_svg.png"
     },
     {
+      "Id": "C:\\Users\\simare2\\Desktop\\DigitalAgency\\DigitalAgency\\wwwroot\\img\\Chiefhappy.jpg",
+      "PackagePath": "staticwebassets\\img\\Chiefhappy.jpg"
+    },
+    {
+      "Id": "C:\\Users\\simare2\\Desktop\\DigitalAgency\\DigitalAgency\\wwwroot\\img\\Simara.jpg",
+      "PackagePath": "staticwebassets\\img\\Simara.jpg"
+    },
+    {
+      "Id": "C:\\Users\\simare2\\Desktop\\DigitalAgency\\DigitalAgency\\wwwroot\\img\\Ulvice.jpg",
+      "PackagePath": "staticwebassets\\img\\Ulvice.jpg"
+    },
+    {
       "Id": "C:\\Users\\simare2\\Desktop\\DigitalAgency\\DigitalAgency\\wwwroot\\img\\about.jpg",
       "PackagePath": "staticwebassets\\img\\about.jpg"
+    },
+    {
+      "Id": "C:\\Users\\simare2\\Desktop\\DigitalAgency\\DigitalAgency\\wwwroot\\img\\app1.jpg",
+      "PackagePath": "staticwebassets\\img\\app1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\simare2\\Desktop\\DigitalAgency\\DigitalAgency\\wwwroot\\img\\app2.jpeg",
+      "PackagePath": "staticwebassets\\img\\app2.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\simare2\\Desktop\\DigitalAgency\\DigitalAgency\\wwwroot\\img\\app3.jpeg",
+      "PackagePath": "staticwebassets\\img\\app3.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\simare2\\Desktop\\DigitalAgency\\DigitalAgency\\wwwroot\\img\\designer.jpg",
+      "PackagePath": "staticwebassets\\img\\designer.jpg"
     },
     {
       "Id": "C:\\Users\\simare2\\Desktop\\DigitalAgency\\DigitalAgency\\wwwroot\\img\\header.png",
